@@ -1,0 +1,12 @@
+.app-page {
+  display: flex;
+  justify-content: center;
+  max-width: 780px;
+  padding-top: 24px;
+  margin: auto;
+
+  &__start {
+    border: 0;
+    appereance: none;
+  }
+}
