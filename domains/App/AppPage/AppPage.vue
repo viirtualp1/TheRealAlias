@@ -1,9 +1,18 @@
 <template>
   <div class="app-page">
-    <div class="app-page__content">
-      <GameWord :word="currentWord" />
+    <div class="app-page__content container">
+      <AsInput
+        class="app-page__input"
+        v-model="currentRoomId"
+        label="ID комнаты"
+      />
 
-      <button class="app-page__start" @click="startGame">Start game</button>
+      <AsButton class="app-page__button" @click="joinRoom">
+        Войти в комнату
+      </AsButton>
+      <AsButton class="app-page__button" @click="createRoom">
+        Создать комнату
+      </AsButton>
     </div>
   </div>
 </template>
@@ -11,22 +20,28 @@
 <style lang="scss" src="./AppPage.scss"></style>
 
 <script setup lang="ts">
-import { GameWord } from "@/domains/Game/GameWord";
+import { AsButton, AsInput } from "@/domains/UI";
 
 const { $io: io } = useNuxtApp();
+const router = useRouter();
 
-const currentWord = ref("");
+const room = ref("");
+const currentRoomId = ref("");
 
-function startGame() {
-  io.emit("start:game");
+function joinRoom() {
+  router.push(`/${currentRoomId.value}`);
+}
+
+function createRoom() {
+  io.emit("room:create");
 }
 
 onMounted(() => {
   io.connect();
 
-  io.on("new:word", (word: string) => {
-    console.log(word);
-    currentWord.value = word;
+  io.on("room:created", (roomId: string) => {
+    currentRoomId.value = roomId;
+    joinRoom();
   });
 });
 </script>
