@@ -48,7 +48,7 @@ const roomId = computed(() => {
 });
 
 const roomLink = computed(() => {
-  return location.href;
+  return location.origin;
 });
 
 function newWord() {
