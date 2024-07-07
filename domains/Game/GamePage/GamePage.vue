@@ -6,6 +6,8 @@
           Перед началом игры убедитесь, что все игроки находятся в комнате
         </div>
 
+        {{ roomId }}
+
         <button
           ref="copyButtonRef"
           class="game-page__link"
@@ -33,61 +35,62 @@
 <style lang="scss" src="./GamePage.scss"></style>
 
 <script setup lang="ts">
-import ClipboardJS from "clipboard";
-import { GameWord } from "@/domains/Game/GameWord";
-import { GameControls } from "@/domains/Game/GameControls";
+import ClipboardJS from "clipboard"
+import { GameWord } from "@/domains/Game/GameWord"
+import { GameControls } from "@/domains/Game/GameControls"
 
-const { $io: io } = useNuxtApp();
-const route = useRoute();
+const { $io: io } = useNuxtApp()
+const route = useRoute()
 
-const currentWord = ref("");
-const copyButtonRef = ref<HTMLButtonElement | null>(null);
+const currentWord = ref("")
+const copyButtonRef = ref<HTMLButtonElement | null>(null)
 
 const roomId = computed(() => {
-  return route.params.id;
-});
+  return route.params.id
+})
 
 const roomLink = computed(() => {
-  return location.origin;
-});
+  return location.origin
+})
 
 function newWord() {
-  io.emit("next:word");
+  io.emit("next:word")
 }
 
 function listenNewWord() {
-  io.on("new:word", (word: string) => (currentWord.value = word));
+  io.on("new:word", (word: string) => (currentWord.value = word))
 }
 
 function unlistenNewWord() {
-  io.disconnect();
+  io.disconnect()
 }
 
 function leaveTheRoom() {
-  io.emit("room:leave", roomId.value);
+  io.emit("room:leave", roomId.value)
 }
 
 function initClipboardButton() {
   if (!copyButtonRef.value) {
-    return;
+    return
   }
 
-  new ClipboardJS(copyButtonRef.value);
+  new ClipboardJS(copyButtonRef.value)
 }
 
 onMounted(() => {
-  io.connect();
-  io.emit("room:join", roomId.value);
-  listenNewWord();
-});
+  io.connect()
+  io.emit("room:join", roomId.value)
+  listenNewWord()
+  initClipboardButton()
+})
 
 onBeforeUnmount(() => {
-  unlistenNewWord();
-  leaveTheRoom();
-});
+  unlistenNewWord()
+  leaveTheRoom()
+})
 
 onBeforeRouteLeave(() => {
-  unlistenNewWord();
-  leaveTheRoom();
-});
+  unlistenNewWord()
+  leaveTheRoom()
+})
 </script>

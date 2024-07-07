@@ -5,12 +5,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  word: {
-    type: String,
-    default: "",
-  },
-});
+defineProps<{
+  word: string
+}>()
 </script>
 
 <style lang="scss" src="./GameWord.scss"></style>

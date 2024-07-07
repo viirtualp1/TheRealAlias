@@ -5,20 +5,17 @@
 </template>
 
 <script setup lang="ts">
-import { AsButton } from "@/domains/UI";
+import { AsButton } from "@/domains/UI"
 
-defineProps({
-  room: {
-    type: String,
-    default: "",
-  },
-});
+defineProps<{
+  room: string
+}>()
 
 const emit = defineEmits({
   next: () => true,
-});
+})
 
 function nextWord() {
-  emit("next");
+  emit("next")
 }
 </script>

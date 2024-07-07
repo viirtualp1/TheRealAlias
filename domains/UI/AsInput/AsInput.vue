@@ -31,54 +31,34 @@
 <style lang="scss" src="./AsInput.scss"></style>
 
 <script setup lang="ts">
-import { useVModel } from "@vueuse/core";
+import { useVModel } from "@vueuse/core"
 
-const props = defineProps({
-  modelValue: {
-    type: [Object, String, Number] as PropType<
-      string | number | null | undefined
-    >,
-    default: "",
-  },
-  type: {
-    type: String,
-    default: "text",
-  },
-  label: {
-    type: String,
-    default: "",
-  },
-  placeholder: {
-    type: String,
-    default: "",
-  },
-  errorMessage: {
-    type: String,
-    default: "",
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-});
+const props = defineProps<{
+  modelValue: object | string | number
+  type?: string
+  label?: string
+  placeholder?: string
+  errorMessage?: string
+  disabled?: boolean
+}>()
 
 const emit = defineEmits({
   "update:modelValue": () => true,
-});
+})
 
-const currentValue = useVModel(props, "modelValue", emit);
+const currentValue = useVModel(props, "modelValue", emit)
 
-const inputRef = ref<HTMLInputElement>();
+const inputRef = ref<HTMLInputElement>()
 
 const hasValue = computed(() => {
   return (
     currentValue.value !== "" &&
     currentValue.value !== undefined &&
     currentValue.value !== null
-  );
-});
+  )
+})
 
 function focus() {
-  inputRef.value?.focus();
+  inputRef.value?.focus()
 }
 </script>

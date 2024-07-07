@@ -6,7 +6,7 @@
     "dev": "nuxt dev -o --host",
     "build": "nuxt build",
     "start": "node .output/server/index.mjs",
-    "server": "tsx server/index.ts"
+    "server": "npx tsx server/index.ts"
   },
   "dependencies": {
     "nuxt": "^3.12.2",
