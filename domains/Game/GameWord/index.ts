@@ -1,1 +1,1 @@
-export { default as GameWord } from "./GameWord.vue";
+export { default as GameWord } from "./GameWord.vue"

@@ -13,14 +13,14 @@
 <style lang="scss" src="./AppButtonBack.scss"></style>
 
 <script setup lang="ts">
-const router = useRouter();
-const route = useRoute();
+const router = useRouter()
+const route = useRoute()
 
 const isHomeRoute = computed(() => {
-  return route.name === "index";
-});
+  return route.name === "index"
+})
 
 function goHome() {
-  router.push("/");
+  router.push("/")
 }
 </script>

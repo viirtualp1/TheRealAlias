@@ -1,1 +1,1 @@
-export { default as GamePage } from "./GamePage.vue";
+export { default as GamePage } from "./GamePage.vue"

@@ -6,5 +6,5 @@
 </template>
 
 <script setup lang="ts">
-import { AppButtonBack } from "@/domains/App/AppButtonBack";
+import { AppButtonBack } from "@/domains/App/AppButtonBack"
 </script>

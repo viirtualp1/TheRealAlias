@@ -1,1 +1,1 @@
-export { default as GameControls } from "./GameControls.vue";
+export { default as GameControls } from "./GameControls.vue"

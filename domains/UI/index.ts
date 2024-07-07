@@ -1,2 +1,2 @@
-export * from "./AsButton";
-export * from "./AsInput";
+export * from "./AsButton"
+export * from "./AsInput"

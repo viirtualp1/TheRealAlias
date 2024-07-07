@@ -20,28 +20,28 @@
 <style lang="scss" src="./AppPage.scss"></style>
 
 <script setup lang="ts">
-import { AsButton, AsInput } from "@/domains/UI";
+import { AsButton, AsInput } from "@/domains/UI"
 
-const { $io: io } = useNuxtApp();
-const router = useRouter();
+const { $io: io } = useNuxtApp()
+const router = useRouter()
 
-const room = ref("");
-const currentRoomId = ref("");
+const room = ref("")
+const currentRoomId = ref("")
 
 function joinRoom() {
-  router.push(`/${currentRoomId.value}`);
+  router.push(`/${currentRoomId.value}`)
 }
 
 function createRoom() {
-  io.emit("room:create");
+  io.emit("room:create")
 }
 
 onMounted(() => {
-  io.connect();
+  io.connect()
 
   io.on("room:created", (roomId: string) => {
-    currentRoomId.value = roomId;
-    joinRoom();
-  });
-});
+    currentRoomId.value = roomId
+    joinRoom()
+  })
+})
 </script>
