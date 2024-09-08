@@ -25,9 +25,9 @@
           Ссылка на комнату
         </button>
       </template>
+      <game-word v-else :word="currentWord" />
 
-      <GameWord v-if="currentWord" :word="currentWord" />
-      <GameControls @next="newWord" :room="roomId" />
+      <game-controls :room="roomId" @next="newWord" />
     </div>
   </div>
 </template>

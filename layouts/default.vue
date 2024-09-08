@@ -1,6 +1,6 @@
 <template>
   <div id="layout">
-    <AppButtonBack />
+    <app-button-back />
     <slot />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <GamePage />
+  <game-page />
 </template>
 
 <script setup lang="ts">

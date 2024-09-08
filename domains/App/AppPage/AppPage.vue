@@ -1,18 +1,18 @@
 <template>
   <div class="app-page">
     <div class="app-page__content container">
-      <AsInput
-        class="app-page__input"
+      <as-input
         v-model="currentRoomId"
         label="ID комнаты"
+        class="app-page__input"
       />
 
-      <AsButton class="app-page__button" @click="joinRoom">
+      <as-button class="app-page__button" @click="joinRoom">
         Войти в комнату
-      </AsButton>
-      <AsButton class="app-page__button" @click="createRoom">
+      </as-button>
+      <as-button class="app-page__button" @click="createRoom">
         Создать комнату
-      </AsButton>
+      </as-button>
     </div>
   </div>
 </template>
@@ -25,7 +25,6 @@ import { AsButton, AsInput } from "@/domains/UI"
 const { $io: io } = useNuxtApp()
 const router = useRouter()
 
-const room = ref("")
 const currentRoomId = ref("")
 
 function joinRoom() {

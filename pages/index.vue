@@ -1,5 +1,5 @@
 <template>
-  <AppPage />
+  <app-page />
 </template>
 
 <script setup lang="ts">

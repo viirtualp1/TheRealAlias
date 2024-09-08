@@ -1,6 +1,6 @@
 <template>
   <div class="game-controls">
-    <AsButton @click="nextWord">Новое слово</AsButton>
+    <as-button @click="nextWord">Новое слово</as-button>
   </div>
 </template>
 
@@ -11,9 +11,9 @@ defineProps<{
   room: string
 }>()
 
-const emit = defineEmits({
-  next: () => true,
-})
+const emit = defineEmits<{
+  (e: 'next'): void
+}>()
 
 function nextWord() {
   emit("next")
